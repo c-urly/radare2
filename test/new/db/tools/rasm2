@@ -537,3 +537,19 @@ EXPECT=<<EOF
 0x0000000c   2                     e031  cmp/eq r14, r1
 EOF
 RUN
+
+NAME=rasm -a tricore -D
+FILE=-
+CMDS=!rasm2 -a tricore -c v2 -D "be22"
+EXPECT=<<EOF
+0x00000000   2                     be22  jeq d15, d2, 0x00000024
+EOF
+RUN
+
+NAME=rasm -a tricore -D
+FILE=-
+CMDS=!rasm2 -a tricore -D "be22"
+EXPECT=<<EOF
+0x00000000   2                     be22  .hword 0x22be
+EOF
+RUN
